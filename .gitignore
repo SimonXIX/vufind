@@ -6,3 +6,10 @@ ChangeLog
 TAGS
 *~
 vendor/.git
+local/config/**
+local/harvest/**
+solr/biblio/**
+solr/authority/**
+solr/reserves/**
+solr/website/**
+solr/stats/**
