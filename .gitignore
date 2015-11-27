@@ -13,3 +13,5 @@ solr/authority/**
 solr/reserves/**
 solr/website/**
 solr/stats/**
+solr/logs/**
+import/solrmarc.log
