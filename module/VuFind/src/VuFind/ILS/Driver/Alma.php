@@ -126,21 +126,6 @@ class Alma extends AbstractBase implements \VuFindHttp\HttpServiceAwareInterface
     }
 
     /**
-     * Get Statuses
-     *
-     * This is responsible for retrieving the status information for a
-     * collection of records.
-     *
-     * @param array $ids The array of record ids to retrieve the status for
-     *
-     * @throws \VuFind\Exception\ILS
-     * @return array     An array of getStatus() return values on success.
-     */
-    public function getStatuses($ids)
-    {
-    }
-
-    /**
      * Get Holding
      *
      * This is responsible for retrieving the holding information of a certain
@@ -267,6 +252,28 @@ class Alma extends AbstractBase implements \VuFindHttp\HttpServiceAwareInterface
                 = ($status['availability'] == 1) ? 'available' : 'unavailable';
         }
         return $statuses;
+    }
+
+    /**
+     * Get Statuses
+     *
+     * This is responsible for retrieving the status information for a
+     * collection of records.
+     *
+     * @param array $ids The array of record ids to retrieve the status for
+     *
+     * @throws ILSException
+     * @return array     An array of getStatus() return values on success.
+     */
+    public function getStatuses($ids)
+    {
+        $items = [];
+        $count = 0;
+        foreach ($ids as $id) {
+            $items[$count] = $this->getStatus($id);
+            $count++;
+        }
+        return $items;
     }
 
     /**
